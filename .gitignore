@@ -11,7 +11,7 @@ backend/dist/
 *.log
 
 # Environment files
-# frontend/.env
+frontend/.env
 # backend/.env
 
 # OS/Editor junk

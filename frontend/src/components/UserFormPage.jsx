@@ -22,7 +22,10 @@ const UserFormPage = () => {
 
   const fetchUser = async () => {
     try {
-      const response = await axios.get(`http://localhost:8080/api/users/${id}`);
+      const response = await axios.get(
+        `${import.meta.env.VITE_API_URL}/api/users/${id}`
+      );
+
       setUser(response.data.data);
     } catch (err) {
       console.error("Error fetching user:", err);
@@ -39,10 +42,13 @@ const UserFormPage = () => {
 
     try {
       if (isEditMode) {
-        await axios.put(`http://localhost:8080/api/users/${id}`, formData);
+        await axios.put(
+          `${import.meta.env.VITE_API_URL}/api/users/${id}`,
+          formData
+        );
         setMessage("User updated successfully!");
       } else {
-        await axios.post("http://localhost:8080/api/users", formData);
+        await axios.post(`${import.meta.env.VITE_API_URL}/api/users`, formData);
         setMessage("User created successfully!");
       }
 

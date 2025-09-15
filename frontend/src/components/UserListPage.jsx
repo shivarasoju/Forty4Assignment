@@ -16,7 +16,10 @@ const UserListPage = () => {
   const fetchUsers = async () => {
     try {
       setLoading(true);
-      const response = await axios.get("http://localhost:8080/api/users");
+      const response = await axios.get(
+        `${import.meta.env.VITE_API_URL}/api/users`
+      );
+
       setUsers(response.data.data);
       setError("");
     } catch (err) {
@@ -33,7 +36,8 @@ const UserListPage = () => {
     }
 
     try {
-      await axios.delete(`http://localhost:8080/api/users/${userId}`);
+      await axios.delete(`${import.meta.env.VITE_API_URL}/api/users/${userId}`);
+
       // Refresh the user list after deletion
       fetchUsers();
     } catch (err) {
